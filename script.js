@@ -1,3 +1,16 @@
+const buttons = document.querySelectorAll("button");
+const input = document.querySelector("input");
+
+buttons.forEach(function (button) {
+    button.addEventListener("click", () => {
+        const currentValue = input.value;
+        const newValue = button.textContent;
+        const finalValue = currentValue + newValue;
+
+        input.value = finalValue;
+    });
+});
+
 const add = (...num) => {
     return num.reduce((total, element) => total + element, 0);
 };
