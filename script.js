@@ -1,20 +1,52 @@
 const buttons = document.querySelectorAll("button");
 const input = document.querySelector("input");
+let display = "";
 
 buttons.forEach(function (button) {
     button.addEventListener("click", () => {
-        const currentValue = input.value;
-        const newValue = button.textContent;
-
-        if (newValue === "clear") {
-            return input.value = "";
+        if (button.textContent === "clear") {
+            display = "";
+        } else if (button.textContent === "=") {
+            display = evaluateExpression(display);
+        } else {
+            display += button.textContent;
         }
-
-        const finalValue = currentValue + newValue;
-
-        input.value = finalValue;
+        input.value = display;
     });
 });
+
+const evaluateExpression = (expression) => {
+    return parseAndCalculate(expression);
+};
+
+const parseAndCalculate = (expression) => {
+    const operands = expression.split(/[\+\-\*\/]/);
+    const operator = expression.match(/[\+\-\*\/]/);
+
+    if (operands.length !== 2 || !operator) {
+        console.log("This 2");
+        return "Error.";
+    }
+
+    const [num1, num2] = operands.map(parseFloat);
+
+    switch (operator[0]) {
+        case "+":
+            return add(num1, num2);
+        case "-":
+            return subtract(num1, num2);
+        case "*":
+            return mutliply(num1, num2);
+        case "/":
+            if (num2 === 0) {
+                console.log("This 3");
+                return "Error.";
+            }
+            return divide(num1, num2);
+        default:
+            return "Invalid Operator.";
+    }
+};
 
 const add = (...num) => {
     return num.reduce((total, element) => total + element, 0);
@@ -31,21 +63,3 @@ const mutliply = (...num) => {
 const divide = (...num) => {
     return num.reduce((total, element) => total / element);
 };
-
-let firstNum = 5;
-let secondNum = 5;
-let operator = "/";
-
-const operate = (firstNum, secondNum, operator) => {
-    if (operator === "+") {
-        console.log(add(firstNum, secondNum));
-    } else if (operator === "-") {
-        console.log(subtract(firstNum, secondNum));
-    } else if (operator === "/") {
-        console.log(divide(firstNum, secondNum));
-    } else {
-        console.log(mutliply(firstNum, secondNum));
-    }
-};
-
-operate(firstNum, secondNum, operator);
