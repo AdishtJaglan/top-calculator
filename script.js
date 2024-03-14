@@ -5,6 +5,11 @@ buttons.forEach(function (button) {
     button.addEventListener("click", () => {
         const currentValue = input.value;
         const newValue = button.textContent;
+
+        if (newValue === "clear") {
+            return input.value = "";
+        }
+
         const finalValue = currentValue + newValue;
 
         input.value = finalValue;
