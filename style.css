@@ -5,29 +5,34 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #f0f0f0;
+    background-color: #8ecae6;
+    font-family: Arial, sans-serif;
 }
 
 h1 {
     margin: 16px;
-    color: #333;
+    margin: 0;
+    color: #fff;
+    font-size: 32px;
+    text-align: center;
 }
 
 input {
-    width: 100%;
     padding: 10px;
     border-radius: 8px;
     margin-bottom: 12px;
     font-size: 16px;
     background-color: #ffb703;
     color: black;
+    border: none;
+    text-align: right;
 }
 
 .calculator {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 250px;
+    width: 300px;
     padding: 16px;
     background-color: #023047;
     border-radius: 24px;
@@ -38,19 +43,49 @@ input {
 .display {
     display: flex;
     gap: 12px;
+    justify-content: flex-end;
 }
 
 button {
     width: 50px;
     height: 50px;
-    border-radius: 70px;
-    padding: 6px;
+    border-radius: 50%;
     margin: 6px;
     background-color: #fb8500;
     color: white;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
 }
 
 .buttons {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+}
+
+.operator {
+    background-color: #fb8600;
+    color: #023047;
+}
+
+.operator:hover {
+    background-color: #fb4f00;
+}
+
+.operands {
+    background-color: #8ac926;
+    color: #023047;
+}
+
+.operands:hover {
+    background-color: rgb(151, 253, 79);
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
 }

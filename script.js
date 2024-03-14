@@ -4,7 +4,7 @@ let display = "";
 
 buttons.forEach(function (button) {
     button.addEventListener("click", () => {
-        if (button.textContent === "clear") {
+        if (button.textContent === "AC") {
             display = "";
         } else if (button.textContent === "=") {
             display = evaluateExpression(display);
